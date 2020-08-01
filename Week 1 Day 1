@@ -25,4 +25,32 @@ Note: The input will be a non-empty word consisting of uppercase and lowercase l
 
 ----------
 
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        int counter=-1;
+        for(int i=0;i<word.length();i++)
+        {
+           Character ch=word.charAt(i);
+            if(ch>='A'&& ch<='Z')
+            {   if(counter+1==i)
+                {
+                counter++;
+                }
+             else{
+                 return false;
+             }
+                
+            }
+        }    
+        
+        if(counter==-1 || counter==0 || counter==word.length()-1)
+        {
+            return true;
+        }
+        return false;
+              
+            
+    }
+}
+
 
