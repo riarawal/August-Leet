@@ -50,6 +50,9 @@ Use data structure and make fxns
 //  */
 
 ----
+Trie used in this question
+------
+
 
 class TrieNode{
     TrieNode[] arr;
