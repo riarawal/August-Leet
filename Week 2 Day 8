@@ -28,3 +28,46 @@ Return 3. The paths that sum to 8 are:
 3. -3 -> 11
 
 ------------
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+//     public int pathSum(TreeNode root, int sum) {
+        
+//     }
+//}
+
+int helper(TreeNode root, int sum, int total) {
+        if (root == null)
+            return 0;
+        else {
+            total += root.val;
+            int count = sum == total ? 1 : 0;
+            count += helper(root.left, sum, total);
+            count += helper(root.right, sum, total);
+            return count;
+        }
+    }
+    
+    public int pathSum(TreeNode root, int sum) {
+        if (root == null)
+            return 0;
+        else {
+            int count = helper(root, sum, 0);
+            return count + pathSum(root.left, sum) + pathSum(root.right, sum);
+        }
+    }
+}
