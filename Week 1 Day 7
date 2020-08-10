@@ -13,3 +13,54 @@ Input:
 
 Output:
 [2,3]
+
+-------
+
+// class Solution {
+//     public List<Integer> findDuplicates(int[] nums) {
+//         List <Integer> l= new ArrayList<>();
+//         for(int i=0;i<nums.length;i++)
+//         {
+//             for(int j=i+1;j<nums.length;j++)
+//             {
+//                 if(nums[i]==nums[j])l.add(nums[i]);
+                    
+//             }
+//         }
+//         return l;
+//     }
+// }
+
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        HashMap<Integer, Integer> freqMap=new HashMap<>();
+        List <Integer> l= new ArrayList<>();
+        
+        Integer[] newArray = new Integer[nums.length];
+        int ii = 0;
+        for (int value : nums) {
+        newArray[ii++] = Integer.valueOf(value);
+        }
+        
+         for(int i=0;i<newArray.length;i++)
+         {
+             if(freqMap.containsKey(newArray[i]))
+             {
+                int oldf=freqMap.get(newArray[i]);
+                 int newf=oldf+1;
+                 freqMap.put(newArray[i],newf);
+             }
+             else{
+                 freqMap.put(newArray[i],1);
+             }
+         }
+        
+        for(Integer key : freqMap.keySet())
+        {
+            int f=freqMap.get(key);
+            if(f==2)l.add(key);
+        }
+        return l;
+    }
+}
+
