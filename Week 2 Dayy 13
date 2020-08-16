@@ -31,3 +31,65 @@ Generate all combinations as a preprocessing.
 Use bit masking to generate all the combinations.
 ---------------
 
+
+/*lass CombinationIterator {
+
+    public CombinationIterator(String characters, int combinationLength) {
+        
+    }
+    
+    public String next() {
+        
+    }
+    
+    public boolean hasNext() {
+
+    */
+
+
+/**
+ * Your CombinationIterator object will be instantiated and called as such:
+ * CombinationIterator obj = new CombinationIterator(characters, combinationLength);
+ * String param_1 = obj.next();
+ * boolean param_2 = obj.hasNext();
+ */
+
+class CombinationIterator {
+ 
+    List<String> res = new ArrayList<>();
+    StringBuilder sol = new StringBuilder();
+    int len;
+    
+    int index = 0;
+    int limit = (int) 1e4;
+    
+    public CombinationIterator(String characters, int combinationLength) {
+        this.len = combinationLength;
+        backtrack(0, characters);
+    }
+    
+    void backtrack(int start, String characters) {
+        if (res.size() > limit) return; // the problem constraints of 1e4 calls
+        
+        if (sol.length() == len) {
+            res.add(sol.toString());
+            return;
+        }
+        
+        for (int i = start; i < characters.length(); i++) {
+            sol.append(characters.charAt(i));
+            backtrack(i+1, characters);
+            sol.setLength(sol.length()-1);
+        }
+    }
+    
+    public String next() {
+        if (!hasNext()) return "";
+        
+        return res.get(index++);
+    }
+    
+    public boolean hasNext() {
+        return index < res.size();
+    }
+}
