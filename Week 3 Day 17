@@ -36,5 +36,6 @@ Constraints:
 1 <= candies <= 10^9
 1 <= num_people <= 1000
 
+Hint: Give candy to everyone each "turn" first [until you can't], then give candy to one person per turn.
 -------
 
