@@ -25,3 +25,25 @@ Example 3:
 Input: [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
+
+----------
+
+class Solution {
+   // public int maxProfit(int[] prices) {
+        
+   // }
+     public int maxProfit(int[] prices) {
+            if (prices.length == 0) return 0;
+            var dp = new int[3];
+            var min = new int[3];
+            Arrays.fill(min, prices[0]);
+            for (int i = 1; i < prices.length; i++)  {
+                for (int k = 1; k <= 2; k++) {
+                    min[k] = Math.min(min[k], prices[i] - dp[k-1]);
+                    dp[k] = Math.max(dp[k], prices[i] - min[k]);
+                }
+            }
+
+            return dp[2];
+        }
+}
