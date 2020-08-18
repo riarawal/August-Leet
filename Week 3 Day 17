@@ -39,3 +39,27 @@ Constraints:
 Hint: Give candy to everyone each "turn" first [until you can't], then give candy to one person per turn.
 -------
 
+class Solution {
+    public int[] distributeCandies(int candies, int num_people) {
+        int[] a=new int[num_people];
+        int loop=0;
+        int i=0;
+        
+        while(candies>0)
+        {   if(i==num_people)
+            {
+            i=0;
+            loop++;}
+            
+            int current=(loop*num_people)+(i+1);
+            if(candies-current<0)a[i]+=candies;
+            else{
+                a[i]+=current;
+            }
+            i++;
+            candies-=current;
+        }
+        return a;
+    }
+}
+
