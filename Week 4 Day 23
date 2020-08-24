@@ -33,3 +33,74 @@ Queries will only consist of lowercase English letters.
 The number of queries is at most 40000.
 
 Put the words into a trie, and manage a set of pointers within that trie.
+
+----------
+
+// class StreamChecker {
+
+//     public StreamChecker(String[] words) {
+        
+//     }
+    
+//     public boolean query(char letter) {
+        
+//     }
+// }
+
+/**
+ * Your StreamChecker object will be instantiated and called as such:
+ * StreamChecker obj = new StreamChecker(words);
+ * boolean param_1 = obj.query(letter);
+ */
+
+class StreamChecker {
+    class Node{
+        Node[] children;
+        boolean endOfWord;
+        public Node() {
+            children = new Node[26];
+            endOfWord = false;
+        }
+    }
+
+    Node root;
+    StringBuilder sb;
+
+    private void insert(String word) {
+        Node cur = root;
+        for(int i = word.length() - 1; i >= 0; i--) {
+            char ch = word.charAt(i);
+            Node next = cur.children[ch - 'a'];
+            if(next == null) {
+                cur.children[ch - 'a'] = next = new Node();
+            }
+            cur = next;
+        }
+        cur.endOfWord = true;
+    }
+
+    public StreamChecker(String[] words) {
+        root = new Node();
+        sb = new StringBuilder();
+        for(String word : words) {
+            insert(word);
+        }
+    }
+
+    public boolean query(char letter) {
+        boolean res = false;
+
+        sb.append(letter);
+        Node cur = root;
+        for(int i = sb.length() - 1; i >= 0; i--) {
+            char ch = sb.charAt(i);
+            if(cur.children[ch - 'a'] == null) {
+                return false;
+            }
+            cur = cur.children[ch - 'a'];
+            if(cur.endOfWord) return true;
+        }
+
+        return false;
+    }
+}
