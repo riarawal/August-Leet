@@ -16,3 +16,27 @@ Note:
 
 1 <= A.length <= 5000
 0 <= A[i] <= 5000
+
+--------
+
+class Solution {
+    public int[] sortArrayByParity(int[] A) {
+        int[] a=new int[A.length];
+        int j=0;
+            int k=0;
+        for(int i=0;i<A.length;i++)
+        {    
+            if(A[i]%2==0)
+            {
+               a[j]=A[i]; 
+               j++; 
+            }
+            else{
+                a[A.length-k-1]=A[i];
+                k++; 
+            }
+         
+        }
+        return a;
+    }
+}
