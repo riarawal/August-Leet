@@ -36,3 +36,11 @@ Constraints:
 1 <= A.length <= 100
 1 <= A[i] <= A.length
 All integers in A are unique (i.e. A is a permutation of the integers from 1 to A.length).
+
+---------
+
+class Solution {
+    public List<Integer> pancakeSort(int[] A) {
+        
+    }
+}
