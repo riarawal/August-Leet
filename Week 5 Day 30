@@ -12,3 +12,18 @@ Example 1:
 Input: [4,6,15,35]
 Output: 4
 
+Example 2:
+
+Input: [20,50,9,63]
+Output: 2
+
+Example 3:
+
+Input: [2,3,6,7,4,12,21,39]
+Output: 8
+
+Note:
+
+1 <= A.length <= 20000
+1 <= A[i] <= 100000
+
