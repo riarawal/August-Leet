@@ -1,7 +1,6 @@
 Pancake Sorting
-Given an array of integers A, We need to sort the array performing a series of pancake flips.
 
-In one pancake flip we do the following steps:
+Given an array of integers A, We need to sort the array performing a series of pancake flips.In one pancake flip we do the following steps:
 
 Choose an integer k where 0 <= k < A.length.
 Reverse the sub-array A[0...k].
